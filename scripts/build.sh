@@ -31,12 +31,21 @@ set -e
 export CC
 export CXX
 
+if [[ $USE_SLAM == "ON" ]]; then
+  if [[ $BUILD_VISUALIZATIONS == "ON" ]]; then
+    echo "Will build Pangolin"
+  fi
+fi
+
 ROOT_DIR=`pwd`
 BUILD_DIR=$ROOT_DIR/build/$TARGET_ARCHITECTURE
 LICENSE_DIR=$ROOT_DIR/build/licenses
 WORK_DIR=$BUILD_DIR/work
 SRC_DIR=$ROOT_DIR
 SCRIPT_DIR=$ROOT_DIR/scripts/components
+
+echo "BUILD_DIR: " $BUILD_DIR
+echo "WORK_DIR: " $WORK_DIR
 
 mkdir -p $LICENSE_DIR
 INSTALL_PREFIX=$BUILD_DIR
@@ -62,10 +71,10 @@ if [[ $DO_CLEAR == "ON" ]]; then
   # first clear (forget about "make clean", won't work)
   for submodule in suitesparse g2o; do
     echo "nuking $submodule"
-    rm -rf "$submodule"
+#    rm -rf "$submodule"
     git submodule update "$submodule"
   done
-  rm -rf "$INSTALL_PREFIX" # purge CMake build directories
+#  rm -rf "$INSTALL_PREFIX" # purge CMake build directories
 fi
 
 source $SCRIPT_DIR/eigen.sh
@@ -96,6 +105,7 @@ source $SCRIPT_DIR/accelerated-arrays.sh
 if [[ $USE_SLAM == "ON" ]]; then
   source $SCRIPT_DIR/dbow2.sh
   if [[ $BUILD_VISUALIZATIONS == "ON" ]]; then
+    echo "Building Pangolin"
     source $SCRIPT_DIR/pangolin.sh
   fi
 fi
@@ -105,6 +115,6 @@ if [ -d "$BUILD_DIR/lib64" ]; then
   cp -rf $BUILD_DIR/lib64/* $BUILD_DIR/lib/
 fi
 
-if [[ $POST_CLEAR == "ON" ]]; then
-  rm -rf "$WORK_DIR"
-fi
+#if [[ $POST_CLEAR == "ON" ]]; then
+#  rm -rf "$WORK_DIR"
+#fi

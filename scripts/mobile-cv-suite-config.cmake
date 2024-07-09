@@ -52,10 +52,14 @@ else()
   set(_MCS_USE_SLAM FALSE)
 endif()
 
+message(pangolin_path: ${_MCS_LIBS}/libpangolin.${_MCS_OPENCV_LIB_EXT})
+
 if (EXISTS ${_MCS_LIBS}/libpangolin.${_MCS_OPENCV_LIB_EXT})
   set(_MCS_INCLUDE_VISUALIZATIONS TRUE)
+  message(STATUS "Pangolin found")
 else()
   set(_MCS_INCLUDE_VISUALIZATIONS FALSE)
+  message(STATUS "Pangolin not found")
 endif()
 
 set(_MCS_COMPONENTS mobile-cv-suite::core)
