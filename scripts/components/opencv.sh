@@ -60,6 +60,7 @@ else
     -DBUILD_LIST=core,calib3d,features2d,highgui,video,videoio \
     -DWITH_TIFF=OFF -DWITH_JASPER=OFF -DWITH_JPEG=OFF -DWITH_WEBP=OFF -DWITH_OPENEXR=OFF \
     -DWITH_PROTOBUF=OFF -DWITH_QUIRC=OFF \
+    -DWITH_GTK=ON -DWITH_GTK_3_X=ON \
     "$SRC_DIR/opencv"
 
   # These options would also be interesting
