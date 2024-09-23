@@ -27,7 +27,7 @@
 	url = https://github.com/jbeder/yaml-cpp.git
 [submodule "Pangolin"]
 	path = Pangolin
-	url = https://github.com/stevenlovegrove/Pangolin.git
+	url = https://github.com/qjy0427/Pangolin.git
 [submodule "g2o"]
 	path = g2o
 	url = https://github.com/AaltoVision/g2o.git
