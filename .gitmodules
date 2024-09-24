@@ -12,7 +12,7 @@
 	url = https://github.com/DrTimothyAldenDavis/SuiteSparse.git
 [submodule "OpenBLAS"]
 	path = OpenBLAS
-	url = https://github.com/xianyi/OpenBLAS.git
+	url = https://github.com/qjy0427/OpenBLAS.git
 [submodule "ios-cmake"]
 	path = ios-cmake
 	url = https://github.com/leetal/ios-cmake.git
